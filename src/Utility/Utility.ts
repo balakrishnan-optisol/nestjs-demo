@@ -8,6 +8,7 @@ class Utility {
 	successRes(code = 200, data?: any, meesage = 'Success!') {
 		return {
 			status_code: code,
+			status: 'success',
 			timestamp: new Date().toISOString(),
 			data,
 			message: meesage,

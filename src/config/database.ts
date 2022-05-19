@@ -14,5 +14,8 @@ export default SequelizeModule.forRoot({
 	schema: Constants.DB_SCHEMA,
 	logging: false,
 	autoLoadModels: true,
+	sync:{
+		alter:true
+	},
 	models,
 });
