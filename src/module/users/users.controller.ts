@@ -23,6 +23,8 @@ export class UsersController {
 			const userData = await this.userService.create(createUserDto);
 			return Utility.successRes(200, userData, `User added successfully!`);
 		} catch (error) {
+			console.log('create - ', error);
+
 			throw Utility.errorRes(400, error);
 		}
 	}
@@ -89,9 +91,13 @@ export class UsersController {
 	}
 
 	@Delete(':id')
-	remove(@Param('id') id: number) {
+	async remove(@Param('id') id: number) {
 		try {
-			return this.userService.remove(id);
+			await this.userService.remove(id);
+			return Utility.successRes(
+				200,
+				`User data updated successfully!`,
+			);
 		} catch (error) {
 			throw Utility.errorRes(400, error);
 		}
